@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>QR Code Generator - Standalone</title>
+    <title>Dynamic QR Code-generator - Standalone</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <!-- Include QR code library from CDN -->
@@ -465,7 +465,7 @@
 <body>
     <div class="container">
         <header>
-            <h1><i class="fas fa-qrcode"></i> QR Code Generator</h1>
+            <h1><i class="fas fa-qrcode"></i> Dynamic QR Code-generator</h1>
             <p class="subtitle">Create custom QR codes for URLs, text, contact info, and more</p>
         </header>
 
@@ -601,7 +601,7 @@
         </main>
 
         <footer>
-            <p>QR Code Generator System &copy; <span id="current-year"></span> | Built with HTML/CSS/JS</p>
+            <p>Dynamic QR Code-generator System &copy; <span id="current-year"></span> | Built with HTML/CSS/JS</p>
             <p class="footer-links">
                 <a href="#" onclick="showSourceCode()"><i class="fas fa-code"></i> Source Code</a> |
                 <a href="#" onclick="showHelp()"><i class="fas fa-question-circle"></i> Help</a>
@@ -619,7 +619,7 @@
     <script>
 // Initialize when page loads
 document.addEventListener('DOMContentLoaded', function() {
-    console.log("Page loaded, initializing QR Code Generator...");
+    console.log("Page loaded, initializing Dynamic QR Code-generator...");
     
     // Set current year in footer
     document.getElementById('current-year').textContent = new Date().getFullYear();
@@ -873,12 +873,12 @@ document.addEventListener('DOMContentLoaded', function() {
 
 // Helper functions for footer links
 function showSourceCode() {
-    alert('This is a standalone QR Code Generator!\n\nAll code is contained in this single HTML file.\nThe QR code generation is done using the QRCode.js library loaded from CDN.');
+    alert('This is a standalone Dynamic QR Code-generator!\n\nAll code is contained in this single HTML file.\nThe QR code generation is done using the QRCode.js library loaded from CDN.');
     return false;
 }
 
 function showHelp() {
-    alert('QR Code Generator Help:\n\n1. Enter text, URL, email, or phone number\n2. Adjust size, margin, and colors\n3. Click "Generate QR Code"\n4. Click "Download" to save as PNG\n\nNote: This standalone version works entirely in your browser - no server required!');
+    alert('Dynamic QR Code-generator Help:\n\n1. Enter text, URL, email, or phone number\n2. Adjust size, margin, and colors\n3. Click "Generate QR Code"\n4. Click "Download" to save as PNG\n\nNote: This standalone version works entirely in your browser - no server required!');
     return false;
 }
 </script>

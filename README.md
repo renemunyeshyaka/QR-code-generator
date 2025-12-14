@@ -1,10 +1,10 @@
-# QR-code-generator
-A QR code generator system is a software application or platform designed to create QR codes that encode various types of information. A QR code generator system combines user-friendly design, robust encoding algorithms, and flexible output options to facilitate quick and reliable QR code creation for various needs.
+# Dynamic QR-code-generator
+A Dynamic QR Code-generator system is a software application or platform designed to create QR codes that encode various types of information. A Dynamic QR Code-generator system combines user-friendly design, robust encoding algorithms, and flexible output options to facilitate quick and reliable QR code creation for various needs.
 
 
-# QR Code Generator System
+# Dynamic QR Code-generator System
 
-A full-stack QR code generator system built with Node.js, Express, HTML, CSS, and JavaScript.
+A full-stack Dynamic QR Code-generator system built with Node.js, Express, HTML, CSS, and JavaScript.
 
 ## Features
 
