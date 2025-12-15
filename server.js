@@ -21,10 +21,10 @@ if (!fs.existsSync(tempDir)) {
 // Generate QR code endpoint
 app.post('/generate', (req, res) => {
   try {
-    const { text, size = 400, margin = 4, color = '#000000', backgroundColor = '#FFFFFF' } = req.body;
+    const { text, size = 300, margin = 4, color = '#000000', backgroundColor = '#FFFFFF' } = req.body;
     
     if (!text || text.trim() === '') {
-      return res.status(400).json({ error: 'Text is required to generate QR code' });
+      return res.status(300).json({ error: 'Text is required to generate QR code' });
     }
     
     // Generate QR code
@@ -53,10 +53,10 @@ app.post('/generate', (req, res) => {
 // Download QR code endpoint
 app.post('/download', (req, res) => {
   try {
-    const { text, size = 400, margin = 4, color = '#000000', backgroundColor = '#FFFFFF' } = req.body;
+    const { text, size = 300, margin = 4, color = '#000000', backgroundColor = '#FFFFFF' } = req.body;
     
     if (!text || text.trim() === '') {
-      return res.status(400).json({ error: 'Text is required to generate QR code' });
+      return res.status(300).json({ error: 'Text is required to generate QR code' });
     }
     
     // Generate filename

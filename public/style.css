@@ -11,6 +11,7 @@ body {
     min-height: 100vh;
     padding: 20px;
     line-height: 1.6;
+    -webkit-text-size-adjust: 100%; /* Prevent iOS text size adjust */
 }
 
 .container {
@@ -38,6 +39,7 @@ header h1 {
     align-items: center;
     justify-content: center;
     gap: 15px;
+    flex-wrap: wrap;
 }
 
 header .subtitle {
@@ -98,6 +100,7 @@ header .subtitle {
     font-family: 'Poppins', sans-serif;
     resize: vertical;
     transition: border-color 0.3s;
+    -webkit-appearance: none; /* Remove iOS styling */
 }
 
 #qr-content:focus {
@@ -132,7 +135,7 @@ header .subtitle {
 }
 
 .preset-btn {
-    padding: 10px 15px;
+    padding: 12px 16px;
     background-color: #f8f9fa;
     border: 2px solid #e9ecef;
     border-radius: 8px;
@@ -142,6 +145,12 @@ header .subtitle {
     display: flex;
     align-items: center;
     gap: 8px;
+    min-height: 44px; /* Mobile touch target */
+    min-width: 44px;
+    -webkit-tap-highlight-color: rgba(0,0,0,0.1);
+    touch-action: manipulation;
+    user-select: none;
+    -webkit-user-select: none;
 }
 
 .preset-btn:hover {
@@ -192,24 +201,28 @@ input[type="range"] {
     background: #ddd;
     outline: none;
     -webkit-appearance: none;
+    touch-action: manipulation;
 }
 
 input[type="range"]::-webkit-slider-thumb {
     -webkit-appearance: none;
-    width: 22px;
-    height: 22px;
+    width: 24px;
+    height: 24px;
     border-radius: 50%;
     background: #3498db;
     cursor: pointer;
+    border: 2px solid white;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
 }
 
 input[type="color"] {
     width: 60px;
-    height: 40px;
-    border: none;
+    height: 44px;
+    border: 2px solid #ddd;
     border-radius: 8px;
     cursor: pointer;
     padding: 0;
+    touch-action: manipulation;
 }
 
 .actions {
@@ -220,7 +233,7 @@ input[type="color"] {
 }
 
 .btn-primary, .btn-secondary, .btn-tertiary {
-    padding: 15px 25px;
+    padding: 16px 25px;
     border: none;
     border-radius: 10px;
     font-size: 1.1rem;
@@ -233,6 +246,11 @@ input[type="color"] {
     gap: 10px;
     flex: 1;
     min-width: 180px;
+    min-height: 54px; /* Better touch target */
+    -webkit-tap-highlight-color: rgba(0,0,0,0.1);
+    touch-action: manipulation;
+    user-select: none;
+    -webkit-user-select: none;
 }
 
 .btn-primary {
@@ -240,8 +258,8 @@ input[type="color"] {
     color: white;
 }
 
-.btn-primary:hover {
-    transform: translateY(-3px);
+.btn-primary:hover, .btn-primary:active {
+    transform: translateY(-2px);
     box-shadow: 0 7px 14px rgba(52, 152, 219, 0.3);
 }
 
@@ -250,15 +268,17 @@ input[type="color"] {
     color: white;
 }
 
-.btn-secondary:hover:not(:disabled) {
+.btn-secondary:hover:not(:disabled), .btn-secondary:active:not(:disabled) {
     background-color: #219653;
-    transform: translateY(-3px);
+    transform: translateY(-2px);
     box-shadow: 0 7px 14px rgba(39, 174, 96, 0.3);
 }
 
 .btn-secondary:disabled {
     opacity: 0.5;
     cursor: not-allowed;
+    transform: none !important;
+    box-shadow: none !important;
 }
 
 .btn-tertiary {
@@ -266,9 +286,9 @@ input[type="color"] {
     color: white;
 }
 
-.btn-tertiary:hover {
+.btn-tertiary:hover, .btn-tertiary:active {
     background-color: #c0392b;
-    transform: translateY(-3px);
+    transform: translateY(-2px);
     box-shadow: 0 7px 14px rgba(231, 76, 60, 0.3);
 }
 
@@ -282,6 +302,7 @@ input[type="color"] {
     min-height: 350px;
     margin-bottom: 25px;
     border: 2px dashed #ddd;
+    position: relative;
 }
 
 .qr-placeholder {
@@ -297,6 +318,15 @@ input[type="color"] {
 
 .qr-placeholder p {
     font-size: 1.2rem;
+    margin: 5px 0;
+}
+
+.qr-placeholder .mobile-hint {
+    font-size: 0.9rem;
+    color: #3498db;
+    font-style: italic;
+    margin-top: 10px;
+    display: none;
 }
 
 .qr-image {
@@ -304,6 +334,8 @@ input[type="color"] {
     max-height: 300px;
     border-radius: 10px;
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    background-color: white;
+    display: block;
 }
 
 .qr-info {
@@ -343,6 +375,7 @@ input[type="color"] {
     font-weight: 600;
     color: #2c3e50;
     font-size: 1.1rem;
+    word-break: break-word;
 }
 
 .instructions {
@@ -386,6 +419,8 @@ footer p {
     text-decoration: none;
     margin: 0 10px;
     transition: color 0.3s;
+    display: inline-block;
+    padding: 5px;
 }
 
 .footer-links a:hover {
@@ -412,6 +447,7 @@ footer p {
     border-radius: 15px;
     text-align: center;
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+    max-width: 90%;
 }
 
 .loading-spinner i {
@@ -426,23 +462,142 @@ footer p {
     color: #2c3e50;
 }
 
-/* Responsive adjustments */
-@media (max-width: 1100px) {
-    .generator-container {
-        flex-direction: column;
-    }
-}
-
+/* Mobile-specific styles */
 @media (max-width: 768px) {
+    body {
+        padding: 10px;
+    }
+    
+    header {
+        padding: 20px 15px;
+    }
+    
     header h1 {
-        font-size: 2.2rem;
+        font-size: 2rem;
+        gap: 10px;
+    }
+    
+    .generator-container {
+        padding: 15px;
+        gap: 20px;
     }
     
     .input-section, .output-section {
-        padding: 20px;
+        padding: 20px 15px;
+        min-width: 100%;
+    }
+    
+    .actions {
+        flex-direction: column;
     }
     
     .btn-primary, .btn-secondary, .btn-tertiary {
         min-width: 100%;
+        margin-bottom: 10px;
+        padding: 18px 20px;
     }
+    
+    .qr-preview-container {
+        min-height: 280px;
+        padding: 20px;
+    }
+    
+    .qr-placeholder .mobile-hint {
+        display: block;
+    }
+    
+    .preset-buttons {
+        justify-content: center;
+    }
+    
+    .preset-btn {
+        flex: 1;
+        min-width: 0;
+        justify-content: center;
+        padding: 12px 10px;
+        font-size: 0.9rem;
+    }
+    
+    .setting-row {
+        flex-direction: column;
+        gap: 15px;
+    }
+    
+    .setting-group {
+        min-width: 100%;
+    }
+    
+    .info-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    footer {
+        padding: 20px 15px;
+    }
+    
+    .footer-links a {
+        display: block;
+        margin: 5px 0;
+    }
+    
+    /* iOS Safari specific fixes */
+    @supports (-webkit-touch-callout: none) {
+        textarea, input {
+            font-size: 16px; /* Prevents iOS zoom */
+        }
+        
+        .qr-image {
+            -webkit-user-drag: none;
+        }
+    }
+}
+
+/* Small mobile devices */
+@media (max-width: 480px) {
+    header h1 {
+        font-size: 1.7rem;
+    }
+    
+    .input-section h2, .output-section h2 {
+        font-size: 1.5rem;
+    }
+    
+    #qr-content {
+        min-height: 120px;
+        font-size: 16px; /* Prevents iOS zoom */
+    }
+    
+    .qr-image {
+        max-height: 250px;
+    }
+    
+    .loading-spinner {
+        padding: 30px 20px;
+    }
+}
+
+/* Prevent text selection on interactive elements */
+button, .preset-btn, .btn-primary, .btn-secondary, .btn-tertiary {
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+/* Improve focus states for accessibility */
+button:focus, input:focus, textarea:focus {
+    outline: 2px solid #3498db;
+    outline-offset: 2px;
+}
+
+/* Animation for QR code appearance */
+@keyframes qrAppear {
+    from { opacity: 0; transform: scale(0.95); }
+    to { opacity: 1; transform: scale(1); }
+}
+
+.qr-image {
+    animation: qrAppear 0.3s ease-out;
 }
